@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Crud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+   <!--Chems style-->
+    <!--common style-->
+    <link href="assets/fonts/icomoon/icomoon.css" rel="stylesheet">
+    <link href="assets/fonts/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/datepicker.min.css" rel="stylesheet">
+    <link href="assets/css/components.css" rel="stylesheet">    
+    <link href="assets/css/main.css" rel="stylesheet"> 
+
+	  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- <link href="assets/css/jasny-bootstrap.min.css" rel="stylesheet"> -->
+    
+
+    <!--responsive style-->
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+
+   <link 
+   rel="stylesheet"
+   href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
+   integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If"
+   crossorigin="anonymous"> -->
+ 
+ <!-- Latest compiled and minified JavaScript -->
+ <script
+   src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"
+   integrity="sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k"
+   crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
+
+
+</head>
+
+<body class="rtl  login-container">
+<header>
+<div class="headerB"></div>
+</header>
+
+  <div class="container">
+    <div class="content">
+
+<h2>احجز يوومك !</h2>
+   
+
+
+    <div class="formcontainer">
+      <div class="d-flex justify-content-around ">
+      <input type="text" name="name" placeholder="name of resturant">
+      <input type="text" name="location" placeholder="location">
+      <input type="date" name="bday">
+      <button class="submit">submit</button>
+    </div>
+
+    </div>
+    <div class="res-container"></div>
+
+  </div>
+
+  </div>
+
+  <!-- Chems JS -->
+  <script src="assets/js/datepicker.min.js"></script>
+  <script src="assets/js/datepicker.en.js"></script>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDc3qRNhoWCiKHHMIHPdbJuGl9LxH45g58",
+      authDomain: "crud-d8d3c.firebaseapp.com",
+      databaseURL: "https://crud-d8d3c.firebaseio.com",
+      projectId: "crud-d8d3c",
+      storageBucket: "",
+      messagingSenderId: "110584683911"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>
