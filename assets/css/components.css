@@ -578,8 +578,9 @@ h3, h4 {
 input 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
+ 
+  width: 100%;
+
   border:none;
   border-bottom:1px solid #757575;
 }

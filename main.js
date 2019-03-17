@@ -17,7 +17,7 @@ $(document).ready(function () { //must always be here if you use JQuery
         console.log(changes)
         changes.forEach(res => {
             console.log(res.doc.data());
-            resList.append(`<li data-id="${res.doc.id}"> <span class="nameClass">${res.doc.data().name} </span> - <span class="locationClass"> ${res.doc.data().location} </span> - <span class="dateClass">${res.doc.data().date} </span> <button class="edit">edit</button> <button class="delete">delete</button> </li>`)
+            resList.append(`<li data-id="${res.doc.id}" class="li-look d-flex justify-content-lg-between px-3 py-1"> <span class="nameClass">${res.doc.data().name} </span> - <span class="locationClass"> ${res.doc.data().location} </span> - <span class="dateClass">${res.doc.data().date} </span> <button class="edit btn btn-default">edit</button> <button class="delete btn btn-danger">delete</button> </li>`)
         });
     }).catch(err => console.log(err))
 
@@ -92,7 +92,7 @@ console.log($(`[data-id="${id}"]`));
 
                     $(".update").remove();
                     
-                    $(`[data-id="${id}"]`).replaceWith(`<li data-id="${id}"> <span class="nameClass" > ${nameI} </span> - <span class="locationClass"> ${locationI} </span>- <span class="locationClass"> ${dateI} </span> <button class="edit">edit</button> <button class="delete">delete</button></li>`)
+                    $(`[data-id="${id}"]`).replaceWith(`<li data-id="${id}" class="li-look d-flex justify-content-lg-between p-3 "> <span class="nameClass" > ${nameI} </span> - <span class="locationClass"> ${locationI} </span>- <span class="locationClass"> ${dateI} </span> <button class="edit btn btn-default">edit</button> <button class="delete btn btn-danger">delete</button></li>`)
                     
                     $('input[name=name]').val('')
                     $('input[name=location]').val('')
@@ -129,7 +129,7 @@ console.log($(`[data-id="${id}"]`));
 
             console.log(` ${name} - ${locationI}`);
 
-            resList.append(`<li data-id="${res.id}"> <span class="nameClass" > ${nameI} </span>- <span class="locationClass"> ${locationI} </span>- <span class="locationClass"> ${dateI} </span> <button class="edit">edit</button> <button class="delete">delete</button></li>`)
+            resList.append(`<li data-id="${res.id}" class="li-look d-flex justify-content-lg-between px-3"> <span class="nameClass" > ${nameI} </span>- <span class="locationClass"> ${locationI} </span>- <span class="locationClass"> ${dateI} </span> <button class="edit btn btn-default">edit</button> <button class="delete btn btn-danger">delete</button></li>`)
         })
 
         $('input[name=name]').val('')
