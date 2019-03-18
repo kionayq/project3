@@ -2,42 +2,42 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Crud</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-   <!--Chems style-->
-    <!--common style-->
-    <link href="assets/fonts/icomoon/icomoon.css" rel="stylesheet">
-    <link href="assets/fonts/line-awesome/css/line-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/datepicker.min.css" rel="stylesheet">
-    <link href="assets/css/components.css" rel="stylesheet">    
-    <link href="assets/css/main.css" rel="stylesheet"> 
+  <!--Chems style-->
+  <!--common style-->
+  <link href="assets/fonts/icomoon/icomoon.css" rel="stylesheet">
+  <link href="assets/fonts/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/datepicker.min.css" rel="stylesheet">
+  <link href="assets/css/components.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-	  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <!-- <link href="assets/css/jasny-bootstrap.min.css" rel="stylesheet"> -->
-    
-
-    <!--responsive style-->
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- <link href="assets/css/jasny-bootstrap.min.css" rel="stylesheet"> -->
 
 
-   <link 
-   rel="stylesheet"
-   href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
-   integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If"
-   crossorigin="anonymous"> 
- 
- <!-- Latest compiled and minified JavaScript -->
- <script
-   src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"
-   integrity="sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k"
-   crossorigin="anonymous"></script>
+  <!--responsive style-->
+  <link href="assets/css/style-responsive.css" rel="stylesheet">
 
-  <link href="main.css"  rel="stylesheet" > 
+
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js" integrity="sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k"
+    crossorigin="anonymous"></script>
+
+
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+  <link href="main.css" rel="stylesheet">
 
 
 </head>
@@ -45,57 +45,64 @@
 <body class="rtl ">
 
 
-  <div class="container main-bg align-items-center d-flex flex-column justify-content-center">
+  <div class=" main-bg align-items-center d-flex flex-column justify-content-center">
     <div class="content">
-<div class="content-header">
-<h2 class="p-3 text-center">ملخص الحجوزات</h2>
+      <div class="content-header">
+        <h2 class="p-3 text-center">ملخص الحجوزات</h2>
 
-</div>
-<br>
-<div class="container">
+      </div>
+      <br>
+      <div class="container">
+
+        <!-- Modal HTML embedded directly into document -->
+        <button class="btn btn-primary w-100"><a href="#ex1" rel="modal:open">Open Modal</a></button>
+
+<div id="ex1" class="modal">
     <div class="formcontainer">
-      <div class="row">
-       
-      
-      <div class="col-sm-3">
-          <input type="text" name="name" placeholder="الحجز باسم">
+        <div class="row">
+          <h2>بيانات الحجز</h2>
+          <div class="col-sm-12">
+            <input type="text" name="name" placeholder="الحجز باسم">
+          </div>
+
+          <div class="col-sm-12">
+            <input type="text" name="location" placeholder="القسم">
+          </div>
+
+          <div class="col-sm-12">
+            <input type="date" name="bday">
+          </div>
+
+          <div class="col-sm-12">
+            <button class="submit btn btn-primary w-100">احجز</button>
+          </div>
         </div>
-      
-      <div class="col-sm-3">
-          <input type="text" name="location" placeholder="القسم">
-        </div>
-      
-      <div class="col-sm-3">
-          <input type="date" name="bday">
-        </div>
-      
-      <div class="col-sm-3">
-          <button class="submit btn btn-primary w-100">احجز</button>
-        </div>
-    </div>
+      </div>
+    <a href="#" rel="modal:close">Close</a>
   </div>
+  <p></p>
 
-    </div>
-    <div class="res-container"></div>
+      </div>
+      <div class="res-container"></div>
 
-    <br>
-    <br>
-    <table class="table table-striped table-hover table-bordered mb-4">
-      <thead>
-        <tr>
-          <th scope="col"> الحجز باسم</th>
-          <th scope="col" width="30%"> نوع القسم </th>
-          <th scope="col" width="20%"> التاريخ</th>
-          <th scope="col" width="5%">حذف</th>
-          <th scope="col" width="5%">عرض</th>
-        </tr>
-      </thead>
-      <tbody>
+      <br>
+      <br>
+      <table class="table table-striped table-hover table-bordered mb-4">
+        <thead>
+          <tr>
+            <th scope="col"> الحجز باسم</th>
+            <th scope="col" width="30%"> نوع القسم </th>
+            <th scope="col" width="20%"> التاريخ</th>
+            <th scope="col" width="5%">حذف</th>
+            <th scope="col" width="5%">عرض</th>
+          </tr>
+        </thead>
+        <tbody>
 
-      </tbody>
+        </tbody>
       </table>
 
-  </div>
+    </div>
 
   </div>
 
