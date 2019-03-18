@@ -137,8 +137,6 @@ body{
 .btn a {
     color: #fff;
 }
-
-
 .content h2{color: #4d636e}
 .content-header{
     background-image: linear-gradient(to right,#f1f1f1, #efefef);
@@ -152,10 +150,15 @@ body{
 }
 
 .btn-primary {
-
     color: #fff;
-    background-color: #22678f;
-    border-color: #27678e;
+    background-color: #86b694;
+    border-color: #86b694 !important;
+}
+
+.btn-info {
+    color: #fff;
+    background-color:#8189c2;
+    border-color: #8189c2 !important;
 }
 .submit{
     padding:10px 10px 10px 5px;
@@ -163,8 +166,8 @@ body{
 
 
 
-thead {
-    background-image: linear-gradient(to right,#236890, #203030);
+.table thead {
+    background-image: linear-gradient(to right,#86b694, #8189c2);
     color: white;
 }
 
@@ -200,6 +203,37 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url("background.jpeg");
+}
 
+.modal-backdrop {
+z-index: -1;
+}
+
+select{
+    padding: 10px 10px 10px 5px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;}
+
+.done{
+    font-size: 120px;
+    display: none;
+}
+
+.show{
+    display: block;
 
 }
+
+.fa-thumbs-up{
+    color: #d9dcf5;
+}
+
+#calendar {
+    max-width: 900px;
+    margin: 40px auto;
+  }
+
+  .hide{
+      display: none;
+  }
