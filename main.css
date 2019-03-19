@@ -3,9 +3,9 @@
     font-family: 'SwissraCondensed';
     src: url('../fonts/swissra/subset-SwissraCondensed-Medium.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-Medium.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/swissra/subset-SwissraCondensed-Medium.woff2') format('woff2'),
-        url('../fonts/swissra/subset-SwissraCondensed-Medium.woff') format('woff'),
-        url('../fonts/swissra/subset-SwissraCondensed-Medium.ttf') format('truetype');
+        /* url('../fonts/swissra/subset-SwissraCondensed-Medium.woff2') format('woff2'), */
+        /* url('../fonts/swissra/subset-SwissraCondensed-Medium.woff') format('woff'), */
+        /* url('../fonts/swissra/subset-SwissraCondensed-Medium.ttf') format('truetype')*/; 
     font-weight: 500;
     font-style: normal;
 }
@@ -14,8 +14,8 @@
     font-family: 'SwissraCondensed';
     src: url('../fonts/swissra/subset-SwissraCondensed-Heavy.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-Heavy.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/swissra/subset-SwissraCondensed-Heavy.woff2') format('woff2'),
-        url('../fonts/swissra/subset-SwissraCondensed-Heavy.woff') format('woff'),
+        /* url('../fonts/swissra/subset-SwissraCondensed-Heavy.woff2') format('woff2'), */
+        /* url('../fonts/swissra/subset-SwissraCondensed-Heavy.woff') format('woff'), */
         url('../fonts/swissra/subset-SwissraCondensed-Heavy.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
@@ -32,7 +32,7 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'SwissraCondensed';
     src: url('../fonts/swissra/subset-SwissraCondensed-Bold.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-Bold.eot?#iefix') format('embedded-opentype'),
@@ -41,14 +41,14 @@
         url('../fonts/swissra/subset-SwissraCondensed-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-}
+} */
 
 @font-face {
     font-family: 'SwissraCondensed';
     src: url('../fonts/swissra/subset-SwissraCondensed-Light.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-Light.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/swissra/subset-SwissraCondensed-Light.woff2') format('woff2'),
-        url('../fonts/swissra/subset-SwissraCondensed-Light.woff') format('woff'),
+        /* url('../fonts/swissra/subset-SwissraCondensed-Light.woff2') format('woff2'), */
+        /* url('../fonts/swissra/subset-SwissraCondensed-Light.woff') format('woff'), */
         url('../fonts/swissra/subset-SwissraCondensed-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
@@ -58,8 +58,8 @@
     font-family: 'SwissraCondensed';
     src: url('../fonts/swissra/subset-SwissraCondensed-UltraLight.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-UltraLight.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/swissra/subset-SwissraCondensed-UltraLight.woff2') format('woff2'),
-        url('../fonts/swissra/subset-SwissraCondensed-UltraLight.woff') format('woff'),
+        /* url('../fonts/swissra/subset-SwissraCondensed-UltraLight.woff2') format('woff2'), */
+        /* url('../fonts/swissra/subset-SwissraCondensed-UltraLight.woff') format('woff'), */
         url('../fonts/swissra/subset-SwissraCondensed-UltraLight.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
@@ -69,8 +69,8 @@
     font-family: 'SwissraCondensed-Normal';
     src: url('../fonts/swissra/subset-SwissraCondensed-Normal.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-Normal.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/swissra/subset-SwissraCondensed-Normal.woff2') format('woff2'),
-        url('../fonts/swissra/subset-SwissraCondensed-Normal.woff') format('woff'),
+        /* url('../fonts/swissra/subset-SwissraCondensed-Normal.woff2') format('woff2'), */
+        /* url('../fonts/swissra/subset-SwissraCondensed-Normal.woff') format('woff'), */
         url('../fonts/swissra/subset-SwissraCondensed-Normal.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -81,7 +81,7 @@
     src: url('../fonts/swissra/subset-SwissraCondensed-Black.eot');
     src: url('../fonts/swissra/subset-SwissraCondensed-Black.eot?#iefix') format('embedded-opentype'),
         url('../fonts/swissra/subset-SwissraCondensed-Black.woff2') format('woff2'),
-        url('../fonts/swissra/subset-SwissraCondensed-Black.woff') format('woff'),
+        /* url('../fonts/swissra/subset-SwissraCondensed-Black.woff') format('woff'), */
         url('../fonts/swissra/subset-SwissraCondensed-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;

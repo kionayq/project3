@@ -1,3 +1,4 @@
+
 $(document).ready(function () { //must always be here if you use JQuery
 
     let db = firebase.firestore().collection('resturants')
@@ -10,27 +11,19 @@ $(document).ready(function () { //must always be here if you use JQuery
     var MM = ((tdate.getMonth().length + 1) === 1) ? (tdate.getMonth() + 1) : '0' + (tdate.getMonth() + 1);
     var yyyy = tdate.getFullYear();
     var currentDate = yyyy + "-" + MM + "-" + dd;
-    $('input[name=bday]').val(currentDate)
+    $('input[name=bday]').attr("placeholder",currentDate)
 
-    console.log(currentDate)
+    // console.log(currentDate)
 
     getData()
-
-
 
     function getData() {
         table.empty()
         db.get().then(result => {
             let changes = result.docChanges() //gets array of docs
-            console.log(changes)
+            // console.log(changes)
             changes.forEach(res => {
-                console.log(res.doc.data());
-                // resList.append(`<li data-id="${res.doc.id}" class="li-look d-flex justify-content-lg-between px-3 py-1"> 
-                // <span class="nameClass">${res.doc.data().name} </span> - 
-                // <span class="locationClass"> ${res.doc.data().location} </span> -
-                //  <span class="dateClass">${res.doc.data().date} </span>
-                //  <button class="edit btn btn-default" data-toggle="modal" data-target="#popUp">edit</button> 
-                //  <button class="delete btn btn-danger">delete</button> </li>`)
+                // console.log(res.doc.data());
 
 
                 table.append(`  <tr id="${res.doc.id}" data-id="${res.doc.id}">
@@ -42,9 +35,11 @@ $(document).ready(function () { //must always be here if you use JQuery
                <button class="delete btn btn-danger">delete</button> 
             </td>     
         </tr>`)
-
+       
 
             });
+
+            setCalendar()
         }).catch(err => console.log(err))
 
     }
@@ -55,7 +50,7 @@ $(document).ready(function () { //must always be here if you use JQuery
         changes.forEach(res => {
             // console.log(res.doc.data());
             if (res.type == 'added') {
-                console.log(res.doc.data());
+                // console.log(res.doc.data());
                 // ready(res.doc)
             } else if (res.type == 'removed') {
                 let li = resList.$('[date-id=' + res.doc.id + ']')
@@ -145,27 +140,90 @@ $(document).ready(function () { //must always be here if you use JQuery
         $('input[name=bday]').val(currentDate)
         done()
     })
-})
-
-$('#remove-table').click(function(){
-    $('.table').removeClass('show')
-    $('.table').addClass('hide')    
-    $('.calendar').addClass('show')
-    $('.calendar').removeClass('hide')    
-    // $('.calendar').show()
-})
 
 
-$('#remove-calender').click(function(){
-    $('.table').addClass('show')
-    $('.table').removeClass('hide')       
-    $('.calendar').removeClass('show')
-    $('.calendar').addClass('hide')
-})
+    $('#remove-table').click(function () {
+        $('.table').removeClass('show')
+        $('.table').addClass('hide')
+        $('.calendar').addClass('show')
+        $('.calendar').removeClass('hide')
+        // $('.calendar').show()
+    })
+
+
+    $('#remove-calender').click(function () {
+        $('.table').addClass('show')
+        $('.table').removeClass('hide')
+        $('.calendar').removeClass('show')
+        $('.calendar').addClass('hide')
+    })
 
 
 
-function done(){
-    $('.formcontainer').hide()
-    $('.done').addClass('show')
+    $('#bday').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'AR'
+    });
+
+
+    function done() {
+        $('.formcontainer').hide()
+        $('.done').addClass('show')
+    }
+
+
+    //  full calender //
+
+
+
+    var calendarEl = document.getElementById('calendar');
+    var calendar;
+    eventss = [];
+    function setCalendar(){
+
+        
+   
+    db.get().then(result => {
+        let changes = result.docChanges() //gets array of docs
+        changes.forEach(res => {
+
+
+            eventss.push({
+                title: `${res.doc.data().name}`,
+                start: `${res.doc.data().date}`,
+                allDay: true,
+                
+            });
+        });
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'ar-sa',
+            plugins: ['interaction', 'dayGrid', 'timeGrid'],
+            defaultView: 'dayGridMonth',
+            defaultDate: '2019-03-07',
+            timeZone: 'UTC',
+            code: "ar-sa",
+            header: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            events: eventss
+        });     
+
+calendar.render();
+
+
+
+
+
+    }).catch(err => console.log(err))
+
 }
+
+
+    console.log(eventss)
+
+
+
+  
+})
