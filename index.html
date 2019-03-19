@@ -43,44 +43,7 @@
     <script src='fullcalendar/daygrid/main.js'></script>
 
 
-    <script>
 
-     document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
-    defaultView: 'dayGridMonth',
-    defaultDate: '2019-03-07',
-    header: {
-      left: 'prev,next',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    events: [
-      {
-        title: 'All Day Event',
-        start: '2019-03-01'
-      },
-      {
-        title: 'Meeting',
-        start: '2019-03-12T14:30:00'
-      },
-      {
-        title: 'Birthday Party',
-        start: '2019-03-13T07:00:00'
-      },
-      {
-        title: 'Click for Google',
-        url: 'http://google.com/',
-        start: '2019-03-28'
-      }
-    ]
-  });
-
-  calendar.render();
-});
-    </script>
 
     <!-- fullcalendar -->
 
@@ -96,7 +59,7 @@
     <div class=" main-bg align-items-center d-flex flex-column justify-content-center">
         <div class="content">
           <div class="content-header">
-            <h2 class="p-3 text-center">ملخص الحجوزات</h2>
+            <h2 class="p-3 text-center" hover="" title="summry">  ملخص </h2>
     
           </div>
           <br>
@@ -163,7 +126,7 @@
           <button type="button" id="remove-table" class="btn btn-info mt-5"><i class="fa fa-calendar" aria-hidden="true"></i></button>
           <button type="button" id="remove-calender" class="btn btn-info mt-5"><i class="fa fa-tachometer" aria-hidden="true"></i></button>
           <div  style="display:block; width:600px">
-          <div id='calendar' class="calendar hide" style="max-width:600px"></div>
+          <div id='calendar' class="calendar " style="max-width:600px"></div>
           
           <br>
           <br>
@@ -211,6 +174,45 @@
     firebase.initializeApp(config);
   </script>
   <script src="main.js"></script>
+
+  <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+   var calendarEl = document.getElementById('calendar');
+ 
+   var calendar = new FullCalendar.Calendar(calendarEl, {
+     plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+     defaultView: 'dayGridMonth',
+     defaultDate: '2019-03-07',
+     header: {
+       left: 'prev,next',
+       center: 'title',
+       right: 'dayGridMonth,timeGridWeek,timeGridDay'
+     },
+     events: [
+       {
+         title: 'All Day Event',
+         start: '2019-03-01'
+       },
+       {
+         title: 'Meeting',
+         start: '2019-03-12T14:30:00'
+       },
+       {
+         title: 'Birthday Party',
+         start: '2019-03-13T07:00:00'
+       },
+       {
+         title: 'Click for Google',
+         url: 'http://google.com/',
+         start: '2019-03-28'
+       }
+     ]
+   });
+ 
+   calendar.render();
+ });
+     </script>
 
   
     
