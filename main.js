@@ -20,6 +20,7 @@ $(document).ready(function () { //must always be here if you use JQuery
     getData()
 
     function getData() {
+        calendarDiv.empty()
         table.empty()
         db.get().then(result => {
             let changes = result.docChanges() //gets array of docs
@@ -194,16 +195,18 @@ $(document).ready(function () { //must always be here if you use JQuery
     // });
 
 
-    // $('#bday').calendarsPicker({ 
-    //     dateFormat: 'yyyy-mm-dd',
-    // },$.extend( 
+    // $('#bday').calendarsPicker(,$.extend( 
     //     {calendar: $.calendars.instance('islamic', 'ar')}, 
     //     $.calendarsPicker.regionalOptions['ar']));
 
 
-        $('#bday').calendarsPicker($.extend( 
-            {calendar: $.calendars.instance('islamic', 'ar')}, 
-            $.calendarsPicker.regionalOptions['ar']));
+        // $('#bday').calendarsPicker($.extend( 
+        //     {calendar: $.calendars.instance('islamic', 'ar')}, 
+        //     $.calendarsPicker.regionalOptions['ar']));
+            
+        $('#bday').calendarsPicker({ 
+                dateFormat: 'yyyy-mm-dd',
+            });
     
 
    
@@ -224,11 +227,13 @@ $(document).ready(function () { //must always be here if you use JQuery
 
 
 
-    var calendarEl = document.getElementById('calendar');
-    var calendar;
-    eventss = [];
+    
     function setCalendar(){
-           
+        // calendarEl.empty()
+
+        var calendarEl = document.getElementById('calendar');
+        var calendar ;
+        eventss = [];
     db.get().then(result => {
         let changes = result.docChanges() //gets array of docs
         changes.forEach(res => {
@@ -253,8 +258,9 @@ $(document).ready(function () { //must always be here if you use JQuery
             events: eventss
         });     
 
-calendar.render();
 
+
+        calendar.render();
 
 
 
@@ -263,8 +269,7 @@ calendar.render();
 
 }
 
-
-    console.log(eventss)
+    // console.log(eventss)
 
 
 
