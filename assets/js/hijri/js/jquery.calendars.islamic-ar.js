@@ -13,7 +13,7 @@
 		dayNamesShort: 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
 		dayNamesMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
 		digits: $.calendars.substituteDigits(['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']),
-		dateFormat: 'yyyy/mm/dd',
+		dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: true
 	};

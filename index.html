@@ -42,13 +42,24 @@
   <script src='fullcalendar/core/main.js'></script>
   <script src='fullcalendar/daygrid/main.js'></script>
   <script src='fullcalendar/core/locales/ar-sa.js'></script>
-
-
-
-
   <!-- fullcalendar -->
 
 
+  <!--datepicker-->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars.js"></script> 
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars-ar.js"></script> 
+
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars.plus.js"></script>
+
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars.islamic.js"></script>
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars.islamic-ar.js"></script>
+
+                  
+  <link rel="stylesheet" type="text/css" href="assets/js/hijri/css/jquery.calendars.picker.css"> 
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.plugin.js"></script> 
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars.picker.js"></script>
+  <script type="text/javascript" src="assets/js/hijri/js/jquery.calendars.picker-ar.js"></script>
 
 
   <link href="main.css" rel="stylesheet">
@@ -106,7 +117,7 @@
                     </div>
 
                     <div class="col-sm-12">
-                      <input  class="requierd"  name="bday" charset="UTF-8" id="bday"  name="bday">
+                      <input  class="requierd"  name="bday"  autoComplete="off"  id="bday"  name="bday">
                       <span class="error">محجوز ي قلبي</span>
                     </div>
 
@@ -127,14 +138,12 @@
         </div>
 
       </div>
-      <div class="res-container"></div>
+      <div class="content-container">
+        
+        <div id='calendar' class="calendar" style="max-width:600px"></div>
 
-      <div style="display:block; width:600px">
-        <div id='calendar' class="calendar " style="max-width:600px"></div>
-
-        <br>
-        <br>
-        <table class="table table-striped table-hover table-bordered mb-4 text-center hide">
+       
+        <table id="table" class="table table-striped table-hover table-bordered mb-4 text-center ">
           <thead style="width:100%">
             <tr>
               <th scope="col"> الحجز باسم</th>
@@ -147,8 +156,9 @@
           <tbody id="data-grid">
           </tbody>
         </table>
-      </div>
+    
 
+    </div>
 
     </div>
 
@@ -178,9 +188,14 @@
   </script>
 
 
-
+<!-- 
     <script type="text/javascript" src="assets/js/datepicker.min.js"></script>
     <script type="text/javascript"  src="assets/js/datepicker.en.js"></script>
+
+  -->
+
+
+
   <script src="main.js"></script>
 
 

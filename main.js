@@ -2,8 +2,10 @@
 $(document).ready(function () { //must always be here if you use JQuery
 
     let db = firebase.firestore().collection('resturants')
-    let resList = $('.res-container')
+    let contContainer = $('.content-container')
     let table = $('#data-grid')
+
+    let calendarDiv = $('#calendar')
 
 
     var tdate = new Date();
@@ -40,28 +42,29 @@ $(document).ready(function () { //must always be here if you use JQuery
             });
 
             setCalendar()
+
         }).catch(err => console.log(err))
 
     }
 
 
-    db.onSnapshot(result => {
-        let changes = result.docChanges(); //gets array of docs
-        changes.forEach(res => {
-            // console.log(res.doc.data());
-            if (res.type == 'added') {
-                // console.log(res.doc.data());
-                // ready(res.doc)
-            } else if (res.type == 'removed') {
-                let li = resList.$('[date-id=' + res.doc.id + ']')
-                resList.removeChild(li)
-            }
-            // resList.append(`<li data-id="${res.doc.id}">${res.doc.data().name} - ${res.doc.data().location} - ${res.doc.data().date} <button class="edit">edit</button> <button class="delete">delete</button> </li>`)
+    // db.onSnapshot(result => {
+    //     let changes = result.docChanges(); //gets array of docs
+    //     changes.forEach(res => {
+    //         // console.log(res.doc.data());
+    //         if (res.type == 'added') {
+    //             // console.log(res.doc.data());
+    //             // ready(res.doc)
+    //         } else if (res.type == 'removed') {
+    //             let li = resList.$('[date-id=' + res.doc.id + ']')
+    //             resList.removeChild(li)
+    //         }
+    //         // resList.append(`<li data-id="${res.doc.id}">${res.doc.data().name} - ${res.doc.data().location} - ${res.doc.data().date} <button class="edit">edit</button> <button class="delete">delete</button> </li>`)
 
 
-        });
+    //     });
 
-    })
+    // })
 
 
     table.on('click', ".delete", function () {
@@ -118,6 +121,7 @@ $(document).ready(function () { //must always be here if you use JQuery
         $('input[name=location]').val('')
         $('input[name=bday]').val('')
         $('.update').replaceWith(`<button class="submit btn btn-primary w-100 mt-2">احجز</button>`)
+        formappears()
     })
 
 
@@ -143,32 +147,76 @@ $(document).ready(function () { //must always be here if you use JQuery
 
 
     $('#remove-table').click(function () {
+        // $('.calendar').empty()
+        // $('.content-container').empty()
+        //  getData()
+        // $('.content-container').append(calendarDiv)
+        
+
         $('.table').removeClass('show')
         $('.table').addClass('hide')
         $('.calendar').addClass('show')
         $('.calendar').removeClass('hide')
-        // $('.calendar').show()
+        $('.calendar').show()
     })
 
+    $('#remove-table').click(removeTable())
 
-    $('#remove-calender').click(function () {
+    function removeTable() {
+        $('#table').removeClass('show')
+        $('#table').addClass('hide')
+        $('.calendar').addClass('show')
+        $('.calendar').removeClass('hide')
+    }
+
+
+
+    $('#remove-calender').click(function(){
         $('.table').addClass('show')
         $('.table').removeClass('hide')
         $('.calendar').removeClass('show')
         $('.calendar').addClass('hide')
-    })
-
-
-
-    $('#bday').datepicker({
-        format: 'yyyy-mm-dd',
-        language: 'AR'
     });
 
+    // $('#remove-calender').click(removeCalender());
+
+    // function removeCalender(){
+    //     $('#table').addClass('show')
+    //     $('#table').removeClass('hide')
+    //     $('.calendar').removeClass('show')
+    //     $('.calendar').addClass('hide')
+    // }
+
+
+    // $('#bday').datepicker({
+    //     format: 'yyyy-mm-dd',
+    //     language: 'AR'
+    // });
+
+
+    // $('#bday').calendarsPicker({ 
+    //     dateFormat: 'yyyy-mm-dd',
+    // },$.extend( 
+    //     {calendar: $.calendars.instance('islamic', 'ar')}, 
+    //     $.calendarsPicker.regionalOptions['ar']));
+
+
+        $('#bday').calendarsPicker($.extend( 
+            {calendar: $.calendars.instance('islamic', 'ar')}, 
+            $.calendarsPicker.regionalOptions['ar']));
+    
+
+   
+
+  
 
     function done() {
         $('.formcontainer').hide()
         $('.done').addClass('show')
+    }
+    function formappears() {
+        $('.formcontainer').show()
+        $('.done').removeClass('show')
     }
 
 
@@ -180,26 +228,21 @@ $(document).ready(function () { //must always be here if you use JQuery
     var calendar;
     eventss = [];
     function setCalendar(){
-
-        
-   
+           
     db.get().then(result => {
         let changes = result.docChanges() //gets array of docs
         changes.forEach(res => {
-
-
             eventss.push({
                 title: `${res.doc.data().name}`,
                 start: `${res.doc.data().date}`,
-                allDay: true,
-                
+                allDay: true,                
             });
         });
         calendar = new FullCalendar.Calendar(calendarEl, {
             locale: 'ar-sa',
             plugins: ['interaction', 'dayGrid', 'timeGrid'],
             defaultView: 'dayGridMonth',
-            defaultDate: '2019-03-07',
+            defaultDate: currentDate,
             timeZone: 'UTC',
             code: "ar-sa",
             header: {

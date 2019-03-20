@@ -28,7 +28,7 @@
 		formatDate: function(format, settings) {
 			if (typeof format !== 'string') {
 				settings = format;
-				format = '';
+				format = 'yyyy-mm-dd';
 			}
 			return this._calendar.formatDate(format || '', this, settings);
 		}
