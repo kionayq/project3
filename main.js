@@ -132,25 +132,49 @@ $(document).ready(function () { //must always be here if you use JQuery
         let dateI = $('input[name=bday]').val()
         console.log(checkDate(dateI))
 
-        if ( !checkDate(dateI)){
+        if ( checkDate(dateI)){
+
             db.add({
                 name: nameI,
                 location: locationI,
-                date: dateI
-    
+                date: dateI    
             }).then(res => {
-                getData()
-            })
-    
+                getData()       
+                done()
+                alert("jlhl")   
             $('input[name=name]').val('')
             $('input[name=location]').val('')
             $('input[name=bday]').val(currentDate)
-            done()
-        }
+            $('#bday').css('border-bottom','1px solid #757575')
+            $('.error').css('display','none')
+            })    
+        }else {
+            alert("محجوز من زماان")                   
 
+            $('#bday').css('border-bottom',' 1px solid red')
+            $('.error').css('display','block')
+        }       
        
     })
 
+    function checkDate(input,location){
+        console.log("input", input)
+        let checker = 0
+        db.get().then(result => {
+            let changes = result.docChanges() //gets array of docs
+            console.log(result)
+            changes.forEach(res => {                       
+                    if (res.doc.data().date == input){
+                        checker = 1
+                    }
+                })                                    
+            })
+            if (checker == 1 ){                    
+                return false                        
+            }else{                                  
+                return true}   
+                      
+}
 
     $('#remove-table').click(function () {
         // $('.calendar').empty()
@@ -166,23 +190,7 @@ $(document).ready(function () { //must always be here if you use JQuery
         $('.calendar').show()
     })
 
-    function checkDate(input){
-        console.log("input", input)
 
-        db.get().then(result => {
-            let changes = result.docChanges() //gets array of docs
-            console.log(changes)
-            // changes.forEach(res => {
-            //     console.log(res.doc.data().date)
-            //         if (res.doc.data().date == input){
-            //             // alert("Halaaaaa")
-            //             console.log("false")
-            //             return false
-            //         }
-            // })
-
-            })
-}
 
 
     $('#remove-table').click(removeTable())
