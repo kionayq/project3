@@ -28,7 +28,6 @@ $(document).ready(function () { //must always be here if you use JQuery
             changes.forEach(res => {
                 // console.log(res.doc.data());
 
-
                 table.append(`  <tr id="${res.doc.id}" data-id="${res.doc.id}">
             <th scope="row" class="nameClass">${res.doc.data().name}</th>
             <td class="locationClass" >${res.doc.data().location}</td>
@@ -131,19 +130,25 @@ $(document).ready(function () { //must always be here if you use JQuery
         let nameI = $('input[name=name]').val()
         let locationI = $('select[name=location]').val()
         let dateI = $('input[name=bday]').val()
-        db.add({
-            name: nameI,
-            location: locationI,
-            date: dateI
+        console.log(checkDate(dateI))
 
-        }).then(res => {
-            getData()
-        })
+        if ( !checkDate(dateI)){
+            db.add({
+                name: nameI,
+                location: locationI,
+                date: dateI
+    
+            }).then(res => {
+                getData()
+            })
+    
+            $('input[name=name]').val('')
+            $('input[name=location]').val('')
+            $('input[name=bday]').val(currentDate)
+            done()
+        }
 
-        $('input[name=name]').val('')
-        $('input[name=location]').val('')
-        $('input[name=bday]').val(currentDate)
-        done()
+       
     })
 
 
@@ -160,6 +165,25 @@ $(document).ready(function () { //must always be here if you use JQuery
         $('.calendar').removeClass('hide')
         $('.calendar').show()
     })
+
+    function checkDate(input){
+        console.log("input", input)
+
+        db.get().then(result => {
+            let changes = result.docChanges() //gets array of docs
+            console.log(changes)
+            // changes.forEach(res => {
+            //     console.log(res.doc.data().date)
+            //         if (res.doc.data().date == input){
+            //             // alert("Halaaaaa")
+            //             console.log("false")
+            //             return false
+            //         }
+            // })
+
+            })
+}
+
 
     $('#remove-table').click(removeTable())
 
@@ -243,7 +267,19 @@ $(document).ready(function () { //must always be here if you use JQuery
                 allDay: true,                
             });
         });
-        calendar = new FullCalendar.Calendar(calendarEl, {
+        calendar = new FullCalendar.Calendar(calendarEl, { selectable: true, 
+            dateClick: function(info) {
+           
+            //.attr("id", "popUp");
+            console.log(info.dateStr)
+            // let did = data("id")
+
+            // $(this).modal()
+            $('input[name=bday]').val(info.dateStr)
+            $('#popUp').modal({show : true }) 
+
+            },
+        
             locale: 'ar-sa',
             plugins: ['interaction', 'dayGrid', 'timeGrid'],
             defaultView: 'dayGridMonth',
