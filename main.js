@@ -4,10 +4,10 @@ $(document).ready(function () { //must always be here if you use JQuery
     let db = firebase.firestore().collection('resturants')
     let contContainer = $('.content-container')
     let table = $('#data-grid')
-
+    db.where('date', '==', '2019-03-21').get()
+    .then(e => console.log(e.docChanges()[0].doc.data().location))
     let calendarDiv = $('#calendar')
-
-
+   
     var tdate = new Date();
     var dd = tdate.getDate();
     var MM = ((tdate.getMonth().length + 1) === 1) ? (tdate.getMonth() + 1) : '0' + (tdate.getMonth() + 1);
@@ -71,8 +71,6 @@ $(document).ready(function () { //must always be here if you use JQuery
         //  console.log(id)
         let id = $(this).closest('tr').data("id")
         console.log(id)
-
-
         db.doc(id).delete()
         // // .then()
         $(this).parent().parent().hide()
@@ -130,49 +128,61 @@ $(document).ready(function () { //must always be here if you use JQuery
         let nameI = $('input[name=name]').val()
         let locationI = $('select[name=location]').val()
         let dateI = $('input[name=bday]').val()
-        console.log(checkDate(dateI))
 
-        if ( checkDate(dateI)){
+        db.where('date', '==', '2019-03-29').get()
+        .then(e => {
+            if(e.docChanges().length < 1){
+                db.add({
+                    name: nameI,
+                    location: locationI,
+                    date: dateI    
+                }).then(res => {
+                    getData()       
+                    done()
+                $('input[name=name]').val('')
+                $('input[name=location]').val('')
+                $('input[name=bday]').val(currentDate)
+                $('#bday').css('border-bottom','1px solid #757575')
+                $('.error').css('display','none')
+                })    
+            }else {
+                // alert("محجوز من زماان")                   
+                $('#bday').css('border-bottom',' 1px solid red')
+                $('.error').css('display','block')
+            }
+            
 
-            db.add({
-                name: nameI,
-                location: locationI,
-                date: dateI    
-            }).then(res => {
-                getData()       
-                done()
-                alert("jlhl")   
-            $('input[name=name]').val('')
-            $('input[name=location]').val('')
-            $('input[name=bday]').val(currentDate)
-            $('#bday').css('border-bottom','1px solid #757575')
-            $('.error').css('display','none')
-            })    
-        }else {
-            alert("محجوز من زماان")                   
+        })
 
-            $('#bday').css('border-bottom',' 1px solid red')
-            $('.error').css('display','block')
-        }       
+                     
+
+      
        
     })
 
-    function checkDate(input,location){
-        console.log("input", input)
+    function checkDate(input){
         let checker = 0
+        console.log("input", input)
+        
         db.get().then(result => {
             let changes = result.docChanges() //gets array of docs
-            console.log(result)
-            changes.forEach(res => {                       
+            // console.log(result)
+            changes.forEach(res => { 
                     if (res.doc.data().date == input){
+                        console.log("date", res.doc.data().date)                      
+
+                        // alert("there is a previuse boking")                        
                         checker = 1
                     }
-                })                                    
+                })       
+
+                alert(checker)
+                if (checker == 1 ){                    
+                    return false                        
+                }else{                                  
+                    return true}                                
             })
-            if (checker == 1 ){                    
-                return false                        
-            }else{                                  
-                return true}   
+          
                       
 }
 
