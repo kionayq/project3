@@ -18,9 +18,10 @@
       
 
   
-$(document).ready(function() {
-    
-    
+// $(document).ready(function() {
+   
+  function  darkSky(dateI) {
+
   $('.fahrenheit').hide();
   $("#todayF").hide();
   $("#tomorrowF").hide();
@@ -54,7 +55,7 @@ $(document).ready(function() {
 
       })
 
-      var url = "https://api.darksky.net/forecast/e7ea57ca52da5ae872c7c0c343f312be/" + latitude + "," + longitude + "?callback=?&units=si&lang=ar";
+      var url = "https://api.darksky.net/forecast/e7ea57ca52da5ae872c7c0c343f312be/" + latitude + "," + longitude +","+ dateI +"T18:00:00-0400"+"?callback=?&units=si&lang=ar";
 
       $.getJSON(url, function(data) {
         console.log(data);
@@ -89,38 +90,38 @@ $(document).ready(function() {
         
         
         //tomorrow forecast in C
-        var tomorrowMaxTemp = data.daily.data[1].temperatureMax.toFixed(0);
-        var tomorrowMinTemp = data.daily.data[1].temperatureMin.toFixed(0);
-        var tomorrowIcon = "wi wi-forecast-io-" + data.daily.data[1].icon;
+        // var tomorrowMaxTemp = data.daily.data[1].temperatureMax.toFixed(0);
+        // var tomorrowMinTemp = data.daily.data[1].temperatureMin.toFixed(0);
+        // var tomorrowIcon = "wi wi-forecast-io-" + data.daily.data[1].icon;
         $("#tomorrowC").html("<br>"+ tomorrowMinTemp + "&deg;/"+ tomorrowMaxTemp +"&deg; <br> <i class=\"" + tomorrowIcon + "\" id=\"smallIcon\">");
         //tomorrow forecast in F
-        var tomorrowMaxTemp = (data.daily.data[1].temperatureMax *9/5+32).toFixed(0);
-        var tomorrowMinTemp = (data.daily.data[1].temperatureMin *9/5+32).toFixed(0);
-        var tomorrowIcon = "wi wi-forecast-io-" + data.daily.data[1].icon;
-        $("#tomorrowF").html("<br>"+ tomorrowMinTemp + "&deg;/"+ tomorrowMaxTemp +"&deg; <br> <i class=\"" + tomorrowIcon + "\" id=\"smallIcon\">");
+        // var tomorrowMaxTemp = (data.daily.data[1].temperatureMax *9/5+32).toFixed(0);
+        // var tomorrowMinTemp = (data.daily.data[1].temperatureMin *9/5+32).toFixed(0);
+        // var tomorrowIcon = "wi wi-forecast-io-" + data.daily.data[1].icon;
+        // $("#tomorrowF").html("<br>"+ tomorrowMinTemp + "&deg;/"+ tomorrowMaxTemp +"&deg; <br> <i class=\"" + tomorrowIcon + "\" id=\"smallIcon\">");
         
         //after tomorrow forecast in C
-        var afterTomorrowMaxTemp = data.daily.data[2].temperatureMax.toFixed(0);
-        var afterTomorrowMinTemp = data.daily.data[2].temperatureMin.toFixed(0);
-        var afterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[2].icon;
+        // var afterTomorrowMaxTemp = data.daily.data[2].temperatureMax.toFixed(0);
+        // var afterTomorrowMinTemp = data.daily.data[2].temperatureMin.toFixed(0);
+        // var afterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[2].icon;
         $("#afterTomorrowC").html("<br>"+ afterTomorrowMinTemp + "&deg;/"+ afterTomorrowMaxTemp +"&deg; <br> <i class=\"" + afterTomorrowIcon + "\" id=\"smallIcon\">");
         //after tomorrow forecast in F
-        var afterTomorrowMaxTemp = (data.daily.data[2].temperatureMax *9/5+32).toFixed(0);
-        var afterTomorrowMinTemp = (data.daily.data[2].temperatureMin *9/5+32).toFixed(0);
-        var afterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[2].icon;
+        // var afterTomorrowMaxTemp = (data.daily.data[2].temperatureMax *9/5+32).toFixed(0);
+        // var afterTomorrowMinTemp = (data.daily.data[2].temperatureMin *9/5+32).toFixed(0);
+        // var afterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[2].icon;
         $("#afterTomorrowF").html("<br>"+ afterTomorrowMinTemp + "&deg;/"+ afterTomorrowMaxTemp +"&deg; <br> <i class=\"" + afterTomorrowIcon + "\" id=\"smallIcon\">");
         
         
         //after after tomorrow forecast in C :))
-        var afterAfterTomorrowMaxTemp = data.daily.data[3].temperatureMax.toFixed(0);
-        var afterAfterTomorrowMinTemp = data.daily.data[3].temperatureMin.toFixed(0);
-        var afterAfterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[3].icon;
-        $("#afterAfterTomorrowC").html("<br>"+ afterAfterTomorrowMinTemp + "&deg;/"+ afterAfterTomorrowMaxTemp +"&deg; <br> <i class=\"" + afterAfterTomorrowIcon + "\" id=\"smallIcon\">");
+        // var afterAfterTomorrowMaxTemp = data.daily.data[3].temperatureMax.toFixed(0);
+        // var afterAfterTomorrowMinTemp = data.daily.data[3].temperatureMin.toFixed(0);
+        // var afterAfterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[3].icon;
+        // $("#afterAfterTomorrowC").html("<br>"+ afterAfterTomorrowMinTemp + "&deg;/"+ afterAfterTomorrowMaxTemp +"&deg; <br> <i class=\"" + afterAfterTomorrowIcon + "\" id=\"smallIcon\">");
         //after after tomorrow forecast in F :))
-        var afterAfterTomorrowMaxTemp = (data.daily.data[3].temperatureMax *9/5+32).toFixed(0);
-        var afterAfterTomorrowMinTemp = (data.daily.data[3].temperatureMin *9/5+32).toFixed(0);
-        var afterAfterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[3].icon;
-        $("#afterAfterTomorrowF").html("<br>"+ afterAfterTomorrowMinTemp + "&deg;/"+ afterAfterTomorrowMaxTemp +"&deg; <br> <i class=\"" + afterAfterTomorrowIcon + "\" id=\"smallIcon\">");
+        // var afterAfterTomorrowMaxTemp = (data.daily.data[3].temperatureMax *9/5+32).toFixed(0);
+        // var afterAfterTomorrowMinTemp = (data.daily.data[3].temperatureMin *9/5+32).toFixed(0);
+        // var afterAfterTomorrowIcon = "wi wi-forecast-io-" + data.daily.data[3].icon;
+        // $("#afterAfterTomorrowF").html("<br>"+ afterAfterTomorrowMinTemp + "&deg;/"+ afterAfterTomorrowMaxTemp +"&deg; <br> <i class=\"" + afterAfterTomorrowIcon + "\" id=\"smallIcon\">");
        
         
          }, 2200);   // end of timeout 
@@ -184,6 +185,6 @@ $(document).ready(function() {
   $(".date").html(today);
   //end date
 
- 
+    }
 
-});
+// });

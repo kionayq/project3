@@ -251,6 +251,9 @@ $('.confirme').click(function () {
     let dateI = $('input[name=bday]').val()
     m = moment(dateI, 'iYYYY/iM/iD');
     dateI= m.format('YYYY-MM-DD'); 
+    darkSky(dateI)
+
+    $('#dateI').html(dateI)
     db.where('date', '==', dateI).where('location','==',locationI).get()
         .then(e => {
             // console.log(e.docChanges()[0].doc.data())
