@@ -136,6 +136,9 @@ $(document).ready(function () { //must always be here if you use JQuery
         let dateI = $('input[name=bday]').val()
         let outdoorI = $('select[name=outdoor]').val()
 
+        m = moment(dateI, 'iYYYY/iM/iD');
+        dateI= m.format('YYYY-MM-DD'); 
+        alert(n)
         db.add({
             name: nameI,
             location: locationI,
@@ -232,19 +235,23 @@ $('#remove-calender').click(function () {
 //     $.calendarsPicker.regionalOptions['ar']));
 
 
-// $('#bday').calendarsPicker($.extend( 
-//     {calendar: $.calendars.instance('islamic', 'ar')}, 
-//     $.calendarsPicker.regionalOptions['ar']));
+$('#bday').calendarsPicker($.extend( 
+    {calendar: $.calendars.instance('islamic', 'ar'),dateFormat: 'yyyy/mm/dd',}, 
+    $.calendarsPicker.regionalOptions['ar'],
+    
 
-$('#bday').calendarsPicker({
-    dateFormat: 'yyyy-mm-dd',
-});
+));
+
+// $('#bday').calendarsPicker({
+//     dateFormat: 'yyyy/mm/dd',
+// });
 
 
 $('.confirme').click(function () {
 
     let dateI = $('input[name=bday]').val()
-
+    m = moment(dateI, 'iYYYY/iM/iD');
+    dateI= m.format('YYYY-MM-DD'); 
     db.where('date', '==', dateI).get()
         .then(e => {
             if (e.docChanges().length < 1) {
@@ -327,14 +334,7 @@ $('.confirme').click(function () {
                 },
                 events: eventss
             });
-
-
-
             calendar.render();
-
-
-
-
         }).catch(err => console.log(err))
 
     }
