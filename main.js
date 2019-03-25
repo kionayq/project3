@@ -4,8 +4,8 @@ $(document).ready(function () { //must always be here if you use JQuery
     let db = firebase.firestore().collection('resturants')
     let contContainer = $('.content-container')
     let table = $('#data-grid')
-    db.where('date', '==', '2019-03-21').get()
-        .then(e => console.log(e.docChanges()[0].doc.data().location))
+    db.where('date', '==', '2019-03-21').where('location','==','الشاليه بالكامل').get()
+        .then(e => console.log(e.docChanges()[0].doc.data().name))
     let calendarDiv = $('#calendar')
 
     var tdate = new Date();
@@ -138,7 +138,6 @@ $(document).ready(function () { //must always be here if you use JQuery
 
         m = moment(dateI, 'iYYYY/iM/iD');
         dateI= m.format('YYYY-MM-DD'); 
-        alert(n)
         db.add({
             name: nameI,
             location: locationI,
@@ -248,16 +247,21 @@ $('#bday').calendarsPicker($.extend(
 
 
 $('.confirme').click(function () {
-
+    let locationI = $('select[name=location]').val()
     let dateI = $('input[name=bday]').val()
     m = moment(dateI, 'iYYYY/iM/iD');
     dateI= m.format('YYYY-MM-DD'); 
-    db.where('date', '==', dateI).get()
+    db.where('date', '==', dateI).where('location','==',locationI).get()
         .then(e => {
+            // console.log(e.docChanges()[0].doc.data())
+            let nameB 
+           
             if (e.docChanges().length < 1) {
+                
                 confirmed()
             } else {
-                // alert("محجوز من زماان")                   
+                nameB = e.docChanges()[0].doc.data().name
+                alert(nameB+"محجوز من زماان ليت تتواصل مع ")                   
                 $('#bday').css('border-bottom', ' 1px solid red')
                 $('.error').css('display', 'block')
             }

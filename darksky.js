@@ -44,7 +44,7 @@ $(document).ready(function() {
 	}, 1500);     
       
       $.getJSON(geolocation).done(function(location) {
-        console.log(location);
+        // console.log(location);
         //var latitude = location.results[0].geometry.location["lat"];
         // var longitude = location.results[0].geometry.location["lng"];
         //console.log("City: " + location.results[0].address_components[1].long_name);
@@ -54,7 +54,7 @@ $(document).ready(function() {
 
       })
 
-      var url = "https://api.darksky.net/forecast/e7ea57ca52da5ae872c7c0c343f312be/" + latitude + "," + longitude + "?callback=?&units=si";
+      var url = "https://api.darksky.net/forecast/e7ea57ca52da5ae872c7c0c343f312be/" + latitude + "," + longitude + "?callback=?&units=si&lang=ar";
 
       $.getJSON(url, function(data) {
         console.log(data);
