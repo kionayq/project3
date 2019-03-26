@@ -1,4 +1,4 @@
-
+@import url('css/style-responsive.css');
 @font-face {
     font-family: 'SwissraCondensed';
     src: url('../fonts/swissra/subset-SwissraCondensed-Medium.eot');
@@ -205,6 +205,10 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     position: sticky;
 }
+.fa-exclamation-circle{
+    font-size: 120px;
+    color:#db90a2;
+}
 
 @-webkit-keyframes zoomIn {  0% {    -webkit-transform:scale(1);    transform:scale(1);  }  100% {    -webkit-transform:scale(1.2);    transform:scale(1.2);  }}
 @keyframes zoomIn {  0% {    -webkit-transform:scale(1);    transform:scale(1);  }  100% {    -webkit-transform:scale(1.2);    transform:scale(1.2);  }}
@@ -234,7 +238,8 @@ select{
     padding: 10px 10px 10px 5px;
     width: 100%;
     border: none;
-    border-bottom: 1px solid #757575;}
+    border-bottom: 1px solid #757575;
+background-color: #fff;}
 
 .done{
     font-size: 120px;
@@ -247,7 +252,7 @@ select{
 }
 
 .fa-thumbs-up{
-    color: #d9dcf5;
+    color: #b6cabc;
 }
 
 #calendar {
@@ -353,7 +358,7 @@ select{
   
   .wi {
     display: inline-block;
-    font-family: 'weathericons'
+    font-family: 'weathericons';
     font-size: 3.5em;
     line-height: 1.3em;
     -webkit-font-smoothing: antialiased;
@@ -372,11 +377,10 @@ select{
     color: #86b694;
   }
   
-  .bottom {
-    width: 330px;
+  .bottom { 
     margin: 0;
     padding-top: 0;
-    /* position: absolute; */
+
     bottom: 0px;
     z-index: 9999;
   }
@@ -428,18 +432,16 @@ select{
   
   #forio{
     font-size: 0.8em;
-    font-family: 'Dosis', sans-serif;
+ 
     font-weight: bold;
     color: #c7c7c7;
-    float: right;
+    float: left;
     margin: 8px 5px 2px 10px;
   }
   #forio:hover {
     font-size: 0.8em;
-    font-family: 'Dosis', sans-serif;
     font-weight: bold;
     color: #86b496;
-    float: right;
     margin: 8px 5px 2px 10px;
     text-decoration: none;
   }
@@ -504,3 +506,18 @@ select{
       height: 5em;
     }
   }
+
+  .fc-button-primary {
+    background-color: #a794da;
+    border-color: #a794da;;
+}
+
+.content h2 {
+    color: #495082;
+}
+
+.modal-content {
+    border: 0px solid rgba(0,0,0,.2);
+    box-shadow: 2px 2px 10px grey;
+
+}

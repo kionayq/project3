@@ -44,9 +44,9 @@
   <script src='fullcalendar/core/locales/ar-sa.js'></script>
   <script src='fullcalendar/interactions/main.js'></script>
   <!-- fullcalendar -->
-<!-- moment js  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="assets/js/moment-hijri.js"></script>
+  <!-- moment js  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="assets/js/moment-hijri.js"></script>
 
 
   <!--datepicker-->
@@ -82,7 +82,7 @@
       <div class="content-header flex-column text-center  mb-3" style="
       position: relative;
   ">
-        <h2 class="p-3 ml-auto" hover="" title="summry"> ملخص الحجوزات </h2>
+        <h2 class="p-3 ml-auto" hover="" title="Summary of bookings"> ملخص الحجوزات </h2>
         <div class="row justify-content-center mb-n3 ">
           <button type="button" id="remove-table" class="btn btn-info  mx-2"><i class="fa fa-calendar" aria-hidden="true"></i></button>
           <button type="button" id="remove-calender" class="btn btn-info  mx-2 "><i class="fa fa-tachometer"
@@ -95,7 +95,7 @@
 
       <div class="container">
         <!-- Button trigger modal -->
-        <button type="button" id="book" class="btn btn-primary w-100" data-toggle="modal" data-target="#popUp">
+        <button type="button" id="book" class="btn btn-primary w-100" data-toggle="modal" data-target="#popUp" title="book the chalet">
           حجز الشاليه
         </button>
 
@@ -105,7 +105,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">بيانات الحجز</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle" title="book information">بيانات الحجز</h5>
                 <button type="button" name="close" id="close" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -116,7 +116,7 @@
                   <div class="row">
 
                     <div class="col-sm-12">
-                      <input type="text" name="name" placeholder="الحجز باسم">
+                      <input type="text" name="name" maxlength="15" placeholder="الحجز باسم" title="name">
                     </div>
 
                     <div class="col-sm-12">
@@ -129,7 +129,7 @@
 
                     <div class="col-sm-12">
                       <input class="requierd" name="bday" autoComplete="off" id="bday" name="bday">
-                      <span class="error" title="">محجوز ي قلبي</span>
+                      <span class="error" title="it's booked already!">محجوز ي قلبي:(</span>
                     </div>
 
                     <div class="col-sm-12">
@@ -142,7 +142,13 @@
                   <h5>تم إجراء العملية</h5>
                 </div>
 
+                <!-- DELETE CONFIRM -->
+                <div id="delet-confirm" class="hide">
+                  <i class="fa fa-exclamation-circle"></i>
+                <button class="delete-confirm btn btn-info w-100 mt-2" title="delete confirme">تأكيد الحذف</button>
+</div>
 
+<!-- DELETE CONFIRM -->
                 <!-- توقعات الجو -->
                 <div id="weather" class="hide">
                   <div id="city" class="city">
@@ -152,11 +158,10 @@
                       <div class="city-title ">
 
                         <h4> </h4>
-                        <span>                          
-                            الساعة 6 المغرب في تاريخ
-                    <span id="dateI"></span>
-                  بيكون الجو
-                    </span>
+                        <span title="in this date at 6 pm the weather might be">الساعة 6 المغرب في تاريخ
+                          <span id="dateI"></span>
+                          بيكون الجو
+                        </span>
 
                       </div>
                       <!-- <hr /> -->
@@ -174,40 +179,21 @@
 
                       <div class="bottom">
                         <div class="nav-info clearfix">
-                          <!-- <div class="add-info">
-                            <ul id="details">
-                              <li>
-                                <span id="todayC"> </span>
-                                <span id="todayF"> </span>
-                              </li> -->
-                              <!-- <li>
-                                <span id="tomorrowC"> </span>
-                                <span id="tomorrowF"> </span>
-                              </li>
-                              <li>
-                                <span id="afterTomorrowC"> </span>
-                                <span id="afterTomorrowF"> </span>
-                              </li>
-                              <li>
-                                <span id="afterAfterTomorrowC"> </span>
-                                <span id="afterAfterTomorrowF"> </span>
-                              </li> -->
 
-                            </ul>
 
                           <!-- </div> add-info -->
-                          <div> <a href="http://forecast.io" id="forio"> على ذمة Dark Sky </a></div>
+                          <div class="text-left"> <a href="http://forecast.io" id="forio"> على ذمة Dark Sky </a></div>
                         </div> <!-- nav-info -->
                       </div>
                     </div>
                   </div> <!-- bottom -->
                   <div class="row">
-                    <label class="col-sm-8 mt-auto">هل تريد تجهيز الجلسة الخارجية ؟</label>
+                    <label class="col-sm-8 mt-auto" title="Do you want to arrange outdoor things?">هل تريد تجهيز الجلسة الخارجية ؟</label>
 
                     <div class="col-sm-4">
                       <select type="text" name="outdoor">
-                        <option value=" نعم">نعم</option>
-                        <option value=" لا">لا</option>
+                        <option value="نعم" title="Yes">نعم</option>
+                        <option value="لا" title="No">لا</option>
                       </select>
                     </div>
 
@@ -215,7 +201,7 @@
 
 
                   <div class="col-sm-12">
-                    <button class="submit btn btn-primary w-100 mt-2">احجز</button>
+                    <button class="submit btn btn-primary w-100 mt-2" title="book!">احجز!</button>
                   </div>
                 </div>
 
@@ -236,11 +222,10 @@
         <table id="table" class="table table-striped table-hover table-bordered mb-4 text-center ">
           <thead style="width:100%">
             <tr>
-              <th scope="col"> الحجز باسم</th>
-              <th scope="col"> نوع القسم </th>
-              <th scope="col"> التاريخ</th>
-              <th scope="col">اجراءات</th>
-              <!-- <th scope="col" width="5%">عرض</th> -->
+              <th scope="col" title="name"> الحجز باسم</th>
+              <th scope="col" title="type"> نوع القسم </th>
+              <th scope="col" title="date"> التاريخ</th>
+              <th scope="col" title="actions">اجراءات</th>
             </tr>
           </thead>
           <tbody id="data-grid">

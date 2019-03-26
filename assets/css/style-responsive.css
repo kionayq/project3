@@ -2,89 +2,16 @@
    Responsive Table
    ------------------------------- */
 @media screen and (max-width: 600px) {
-  .table-group table {
-    border: 0;
-  }
-  .table-group table caption {
-    font-size: 1.3em;
-  }
-  .table-group table thead {
-    border: none;
-    clip: rect(0 0 00);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  .table-group table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-  .table-group table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: left;
-  }
-  .table-group table td:before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
-    content: attr(data-label);
-    float: right;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  .table-group table td:last-child {
-    border-bottom: 0;
-  }
-	.table-heading {
-	    color: #fff;
-	    background-color: #c8aa4a;
-	}
-	.table-heading h5 {
-	    color: #fff;
-	    background-color: #c8aa4a;
-	}
-	.table-group {
-	    border-top: 0;
-	}
-}
-
-/* -------------------------------
-   Small desktop
-   ------------------------------- */
-
-@media screen and (max-width: 1366px) {
-
-
+ body #calendar {
+     font-size: 10px !important;
+ }
 
 }
+
+
 
 @media screen and (max-width: 1200px) {
 
-	.header-wrap .header-banner {
-	    width: 100%;
-	    position: relative;
-	    padding: 0;
-	    border-radius: 0;
-	}
-	.header-wrap {
-	    padding-right: 0;
-	    left: 0;
-	    position: relative;
-	}
-	.header-wrap .top-bar {
-		border-radius: 0;
-		overflow: hidden;
-	}
-	.wizard {
-		display: none;
-	}
 }
 
 @media screen and (max-width: 1199px) {

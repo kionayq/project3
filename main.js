@@ -1,7 +1,7 @@
 
 $(document).ready(function () { //must always be here if you use JQuery
 
-    let db = firebase.firestore().collection('resturants')
+    let db = firebase.firestore().collection('reservations')
     let contContainer = $('.content-container')
     let table = $('#data-grid')
     db.where('date', '==', '2019-03-21').where('location','==','الشاليه بالكامل').get()
@@ -33,8 +33,8 @@ $(document).ready(function () { //must always be here if you use JQuery
             <td class="locationClass" >${res.doc.data().location}</td>
             <td  class="dateClass" > ${res.doc.data().date}  </td>
             <td>  
-               <button class="edit btn btn-info" data-toggle="modal" data-target="#popUp">edit</button> 
-               <button class="delete btn btn-danger">delete</button> 
+               <button class="edit btn btn-info" data-toggle="modal" data-target="#popUp"><i class="fa fa-edit"></i></button> 
+               <button class="delete btn btn-danger"><i class="fa fa-trash"></i></button> 
             </td>     
         </tr>`)
 
@@ -48,32 +48,33 @@ $(document).ready(function () { //must always be here if you use JQuery
     }
 
 
-    // db.onSnapshot(result => {
-    //     let changes = result.docChanges(); //gets array of docs
-    //     changes.forEach(res => {
-    //         // console.log(res.doc.data());
-    //         if (res.type == 'added') {
-    //             // console.log(res.doc.data());
-    //             // ready(res.doc)
-    //         } else if (res.type == 'removed') {
-    //             let li = resList.$('[date-id=' + res.doc.id + ']')
-    //             resList.removeChild(li)
-    //         }
-    //         // resList.append(`<li data-id="${res.doc.id}">${res.doc.data().name} - ${res.doc.data().location} - ${res.doc.data().date} <button class="edit">edit</button> <button class="delete">delete</button> </li>`)
-
-
-    //     });
-
-    // })
+    
 
 
     table.on('click', ".delete", function () {
         //  console.log(id)
+        deletConfirm()
+        $('.modal-title').html("تأكيدالحذف !!")
+
         let id = $(this).closest('tr').data("id")
+
+        
+
+
+        
+        // $('.submit').replaceWith(``)
+        $('#popUp').modal({ show: true })
+
         console.log(id)
-        db.doc(id).delete()
-        // // .then()
-        $(this).parent().parent().hide()
+        $('.delete-confirm').click(function(){
+            // alert('hhhhhh')
+            done()            
+        $('.modal-title').html("")           
+            db.doc(id).delete() 
+            
+            getData()
+        })
+
 
     })
 
@@ -92,6 +93,7 @@ $(document).ready(function () { //must always be here if you use JQuery
             // $('.formcontainer').append(`<button class="update">Update</button>`)
             // $('.submit').replaceWith(`<button class="update btn btn-info w-100 mt-2">تحديث</button>`)
             $('.update').click(function () {
+                $('.modal-title').html("بيانات الحجز")
                 let nameI = $('input[name=name]').val()
                 let locationI = $('select[name=location]').val()
                 let dateI = $('input[name=bday]').val()
@@ -115,6 +117,8 @@ $(document).ready(function () { //must always be here if you use JQuery
     })
 
     $('button[name=close]').click(function () {
+  
+        $('.modal-title').html("بيانات الحجز")
         $('input[name=name]').val('')
         $('input[name=location]').val('')
         $('input[name=bday]').val('')
@@ -122,6 +126,8 @@ $(document).ready(function () { //must always be here if you use JQuery
         formappears()
     })
     $('#book').click(function () {
+  
+        $('.modal-title').html("بيانات الحجز")
         $('input[name=name]').val('')
         $('input[name=location]').val('')
         $('input[name=bday]').val('')
@@ -157,38 +163,32 @@ $(document).ready(function () { //must always be here if you use JQuery
 
     })
 
-
-
-
-
-
-
-function checkDate(input) {
-    let checker = 0
-    console.log("input", input)
-
-    db.get().then(result => {
-        let changes = result.docChanges() //gets array of docs
-        // console.log(result)
-        changes.forEach(res => {
-            if (res.doc.data().date == input) {
-                console.log("date", res.doc.data().date)
-
-                // alert("there is a previuse boking")                        
-                checker = 1
+    function checkDate(input) {
+        let checker = 0
+        console.log("input", input)
+    
+        db.get().then(result => {
+            let changes = result.docChanges() //gets array of docs
+            // console.log(result)
+            changes.forEach(res => {
+                if (res.doc.data().date == input) {
+                    console.log("date", res.doc.data().date)
+    
+                    // alert("there is a previuse boking")                        
+                    checker = 1
+                }
+            })
+    
+            alert(checker)
+            if (checker == 1) {
+                return false
+            } else {
+                return true
             }
         })
-
-        alert(checker)
-        if (checker == 1) {
-            return false
-        } else {
-            return true
-        }
-    })
-
-
-}
+    
+    
+    }
 
 $('#remove-table').click(function () {
 
@@ -236,8 +236,8 @@ $('#remove-calender').click(function () {
 
 $('#bday').calendarsPicker($.extend( 
     {calendar: $.calendars.instance('islamic', 'ar'),dateFormat: 'yyyy/mm/dd',}, 
-    $.calendarsPicker.regionalOptions['ar'],
-    
+    $.calendarsPicker.regionalOptions['ar'],   
+
 
 ));
 
@@ -247,11 +247,13 @@ $('#bday').calendarsPicker($.extend(
 
 
 $('.confirme').click(function () {
+   
     let locationI = $('select[name=location]').val()
     let dateI = $('input[name=bday]').val()
     m = moment(dateI, 'iYYYY/iM/iD');
     dateI= m.format('YYYY-MM-DD'); 
     darkSky(dateI)
+    $('.modal-title').html("توقعات الطقس")
 
     $('#dateI').html(dateI)
     db.where('date', '==', dateI).where('location','==',locationI).get()
@@ -276,13 +278,19 @@ $('.confirme').click(function () {
         $('.formcontainer').show()
         $('#weather').addClass('hide')
         $('.done').removeClass('show')
+        $('#delet-confirm').addClass('hide')
+        $('#delet-confirm').removeClass('show')
     }
 
     function done() {
+        $('.modal-title').html( '')
         $('.formcontainer').hide()
+        $('.done').removeClass('hide')
         $('.done').addClass('show')
         $('#weather').removeClass('show')
         $('#weather').addClass('hide')
+        $('#delet-confirm').removeClass('show')
+        $('#delet-confirm').addClass('hide')
     }
 
     function confirmed() {
@@ -290,6 +298,17 @@ $('.confirme').click(function () {
         $('.done').removeClass('hide')
         $('#weather').addClass('show')
         $('#weather').removeClass('hide')
+
+    }
+
+    function deletConfirm(){
+        $('.formcontainer').hide()
+        $('.done').removeClass('show')
+        $('.done').addClass('hide')
+        $('#delet-confirm').addClass('show')
+        $('#delet-confirm').removeClass('hide')
+        $('#weather').removeClass('show')
+        $('#weather').addClass('hide')
 
     }
 
@@ -323,9 +342,8 @@ $('.confirme').click(function () {
                     // let did = data("id")
 
                     // $(this).modal()
-                    $('input[name=bday]').val(info.dateStr)
+                    $('input[name=bday]').val(info.dateStr)                    
                     $('#popUp').modal({ show: true })
-
                 },
 
                 locale: 'ar-sa',
