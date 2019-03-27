@@ -28,6 +28,10 @@ this is a reservation system to enable the users to show the bookings and make t
   - user can update any reservation,
   - user can delete any reservation,
   - perform DOM manipulation By jQuery  
+  - FullCalendar library to show the reservations.
+  - Ummalqura datePicker, to select hijri date!
+  - all screens responsive.
+  
 
 ## Hosting
   - GitHub Pages
