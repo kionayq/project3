@@ -8,11 +8,11 @@ this is a reservation system to enable the users to show the bookings and make t
 
 ### story by pictures!
 
-<img style="width:70%"src="https://i.ibb.co/Cb9WtsJ/Whats-App-Image-2019-03-27-at-09-08-25.jpg" alt="Whats-App-Image-2019-03-27-at-09-08-25" height="70%" border="0">
+<img src="https://i.ibb.co/Cb9WtsJ/Whats-App-Image-2019-03-27-at-09-08-25.jpg" alt="Whats-App-Image-2019-03-27-at-09-08-25" style="max-width: 40%;" height="70%" border="0">
 
-<img src="https://i.ibb.co/xLQS1RC/Whats-App-Image-2019-03-27-at-09-08-33.jpg" alt="Whats-App-Image-2019-03-27-at-09-08-33" border="0">
+<img src="https://i.ibb.co/xLQS1RC/Whats-App-Image-2019-03-27-at-09-08-33.jpg" alt="Whats-App-Image-2019-03-27-at-09-08-33" style="max-width: 40%;" border="0">
 
-<img src="https://i.ibb.co/fG97NxP/Whats-App-Image-2019-03-27-at-09-08-33-1.jpg" alt="Whats-App-Image-2019-03-27-at-09-08-33-1" border="0">
+<img src="https://i.ibb.co/fG97NxP/Whats-App-Image-2019-03-27-at-09-08-33-1.jpg" alt="Whats-App-Image-2019-03-27-at-09-08-33-1" border="0" style="max-width: 40%;">
 
 <img src="https://i.ibb.co/7GbSC3c/chalet.png" alt="chalet" border="0">
 
