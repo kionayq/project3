@@ -67,12 +67,11 @@ $(document).ready(function () { //must always be here if you use JQuery
 
         console.log(id)
         $('.delete-confirm').click(function(){
-            // alert('hhhhhh')
             done()            
         $('.modal-title').html("")           
             db.doc(id).delete() 
             
-            getData()
+            // getData()
         })
 
 
@@ -117,12 +116,15 @@ $(document).ready(function () { //must always be here if you use JQuery
     })
 
     $('button[name=close]').click(function () {
+
   
         $('.modal-title').html("بيانات الحجز")
         $('input[name=name]').val('')
         $('input[name=location]').val('')
         $('input[name=bday]').val('')
         $('.update').replaceWith(`<button class="confirme btn btn-primary w-100 mt-2">احجز</button>`)
+        $('.booked').css('display', 'none')     
+        $('.error').css('display', 'none')
         formappears()
     })
     $('#book').click(function () {
@@ -141,6 +143,8 @@ $(document).ready(function () { //must always be here if you use JQuery
         let locationI = $('select[name=location]').val()
         let dateI = $('input[name=bday]').val()
         let outdoorI = $('select[name=outdoor]').val()
+        let swimmingI = $('select[name=swimming]').val()
+
 
         m = moment(dateI, 'iYYYY/iM/iD');
         dateI= m.format('YYYY-MM-DD'); 
@@ -149,6 +153,7 @@ $(document).ready(function () { //must always be here if you use JQuery
             location: locationI,
             date: dateI,
             outdoor: outdoorI,
+            swimming: swimmingI,
         }).then(res => {
             getData()
             done()
@@ -156,6 +161,7 @@ $(document).ready(function () { //must always be here if you use JQuery
             $('input[name=location]').val('')
             $('input[name=bday]').val(currentDate)
             $('#bday').css('border-bottom', '1px solid #757575')
+            $('.booked').css('display', 'none')     
             $('.error').css('display', 'none')
         })
 
@@ -174,11 +180,10 @@ $(document).ready(function () { //must always be here if you use JQuery
                 if (res.doc.data().date == input) {
                     console.log("date", res.doc.data().date)
     
-                    // alert("there is a previuse boking")                        
                     checker = 1
                 }
             })
-    
+
             alert(checker)
             if (checker == 1) {
                 return false
@@ -266,7 +271,9 @@ $('.confirme').click(function () {
                 confirmed()
             } else {
                 nameB = e.docChanges()[0].doc.data().name
-                alert(nameB+"محجوز من زماان ليت تتواصل مع ")                   
+                // alert(nameB+"محجوز من زماان ليت تتواصل مع ")  
+                $('.booker-name').html(nameB)   
+                $('.booked').css('display', 'block')             
                 $('#bday').css('border-bottom', ' 1px solid red')
                 $('.error').css('display', 'block')
             }

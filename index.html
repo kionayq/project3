@@ -96,7 +96,7 @@
       <div class="container">
         <!-- Button trigger modal -->
         <button type="button" id="book" class="btn btn-primary w-100" data-toggle="modal" data-target="#popUp" title="book the chalet">
-          حجز الشاليه
+          حجز الاستراحة
         </button>
 
         <!-- Modal -->
@@ -114,14 +114,19 @@
 
                 <div class="formcontainer">
                   <div class="row">
-
+                    <div class="col-sm-12">
+                      <div class="alert alert-danger booked" style="display: none" role="alert">
+                        محجوز من زماان بس تقدر تتواصل مع <span class="booker-name" style="color:green; ">.......</span> يمكن غير رايه : )
+                      </div>
+                    </div>
+                    
                     <div class="col-sm-12">
                       <input type="text" name="name" maxlength="15" placeholder="الحجز باسم" title="name">
                     </div>
 
                     <div class="col-sm-12">
                       <select type="text" name="location">
-                        <option value="الشاليه بالكامل">الشاليه بالكامل</option>
+                        <option value="الاستراحة بالكامل">الاستراحة بالكامل</option>
                         <option value="الجزء الغربي">الجزء الغربي</option>
                         <option value="الجزء الشرقي">الجزء الشرقي</option>
                       </select>
@@ -160,7 +165,7 @@
                         <h4> </h4>
                         <span title="in this date at 6 pm the weather might be">الساعة 6 المغرب في تاريخ
                           <span id="dateI"></span>
-                          بيكون الجو
+                           بيكون الجو في الاستراحة
                         </span>
 
                       </div>
@@ -189,14 +194,21 @@
                   </div> <!-- bottom -->
                   <div class="row">
                     <label class="col-sm-8 mt-auto" title="Do you want to arrange outdoor things?">هل تريد تجهيز الجلسة الخارجية ؟</label>
-
                     <div class="col-sm-4">
                       <select type="text" name="outdoor">
                         <option value="نعم" title="Yes">نعم</option>
                         <option value="لا" title="No">لا</option>
                       </select>
                     </div>
-
+                  </div>
+                  <div class="row">
+                    <label class="col-sm-8 mt-auto" title="Do you want to arrange the swimming pool?">هل تريد تعبئة المسبح؟</label>
+                    <div class="col-sm-4">
+                      <select type="text" name="swimming">
+                        <option value="نعم" title="Yes">نعم</option>
+                        <option value="لا" title="No">لا</option>
+                      </select>
+                    </div>
                   </div>
 
 

@@ -93,7 +93,7 @@
         // var tomorrowMaxTemp = data.daily.data[1].temperatureMax.toFixed(0);
         // var tomorrowMinTemp = data.daily.data[1].temperatureMin.toFixed(0);
         // var tomorrowIcon = "wi wi-forecast-io-" + data.daily.data[1].icon;
-        $("#tomorrowC").html("<br>"+ tomorrowMinTemp + "&deg;/"+ tomorrowMaxTemp +"&deg; <br> <i class=\"" + tomorrowIcon + "\" id=\"smallIcon\">");
+        // $("#tomorrowC").html("<br>"+ tomorrowMinTemp + "&deg;/"+ tomorrowMaxTemp +"&deg; <br> <i class=\"" + tomorrowIcon + "\" id=\"smallIcon\">");
         //tomorrow forecast in F
         // var tomorrowMaxTemp = (data.daily.data[1].temperatureMax *9/5+32).toFixed(0);
         // var tomorrowMinTemp = (data.daily.data[1].temperatureMin *9/5+32).toFixed(0);
