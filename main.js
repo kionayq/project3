@@ -71,7 +71,7 @@ $(document).ready(function () { //must always be here if you use JQuery
         $('.modal-title').html("")           
             db.doc(id).delete() 
             
-            // getData()
+            getData()
         })
 
 
